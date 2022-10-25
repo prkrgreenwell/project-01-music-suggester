@@ -13,4 +13,9 @@ fetch('https://spotify23.p.rapidapi.com/search/?q=%3CREQUIRED%3E&type=multi&offs
 	.then(response => console.log(response))
 	.catch(err => console.error(err));
 
-    
+var wikiAPI = 'https:/simple.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences-2&titles=Dog&explaintext=1&format=json&formatversion=2&origin=*'
+
+fetch(wikiAPI)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
