@@ -1,21 +1,37 @@
-var spotifyAPIKey = '49898744b0msh96345f1aa45b56dp11709fjsnd5d665180416'
+var searchBtn = document.getElementById('searchBtn');
+var artist = document.getElementById('artist');
+var wikiContent = document.getElementById('wikiContent');
+var userInput = artist.value.trim();
 
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '49898744b0msh96345f1aa45b56dp11709fjsnd5d665180416',
-		'X-RapidAPI-Host': 'spotify23.p.rapidapi.com'
-	}
+function getSeatGeek() {
+
+	userInput = artist.value.trim();
+
+	var seatGeekAPI = 'https://api.seatgeek.com/2/performers?q=' + userInput + '&client_id=Mjk5MjA1OTl8MTY2NjY2MjkxOC4yNDc4MzE4'
+
+	console.log(seatGeekAPI);
+	fetch(seatGeekAPI)
+		.then(response => response.json())
+		.then(response => console.log(response))
+		.catch(err => console.error(err));
 };
 
-fetch('https://spotify23.p.rapidapi.com/search/?q=%3CREQUIRED%3E&type=multi&offset=0&limit=10&numberOfTopResults=5', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+function getWikiAPI() {
 
-var wikiAPI = 'https:/simple.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences-2&titles=Dog&explaintext=1&format=json&formatversion=2&origin=*'
+	userInput = artist.value.trim();
 
-fetch(wikiAPI)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+	var wikiAPI = 'https:/simple.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences-2&titles=' + userInput + '&explaintext=1&format=json&formatversion=2&origin=*'
+
+	console.log(wikiAPI);
+	fetch(wikiAPI)
+		.then(response => response.json())
+		.then(response => console.log(response))
+		.catch(err => console.error(err));
+
+		wikiContent.textContent = 'blank for now'
+};
+
+searchBtn.addEventListener('click',() => {
+	getSeatGeek();
+	getWikiAPI();
+});
