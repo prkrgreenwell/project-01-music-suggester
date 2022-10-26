@@ -1,13 +1,14 @@
-var searchBtn = document.getElementById('searchBtn');
-var artist = document.getElementById('artist');
+var startButton = document.getElementById('startButton');
+console.log(startButton);
+var input = document.getElementById('input');
 var wikiContent = document.getElementById('wikiContent');
-var userInput = artist.value.trim();
+var userInput = input.value.trim();
 
 function getSeatGeek() {
 
-	userInput = artist.value.trim();
+	userInput = input.value.trim();
 
-	var seatGeekAPI = 'https://api.seatgeek.com/2/performers?q=' + userInput + '&client_id=Mjk5MjA1OTl8MTY2NjY2MjkxOC4yNDc4MzE4'
+	var seatGeekAPI = 	'https://api.seatgeek.com/2/events?q=' + userInput + '&client_id=Mjk5MjA1OTl8MTY2NjY2MjkxOC4yNDc4MzE4';
 
 	console.log(seatGeekAPI);
 	fetch(seatGeekAPI)
@@ -18,9 +19,9 @@ function getSeatGeek() {
 
 function getWikiAPI() {
 
-	userInput = artist.value.trim();
+	userInput = input.value.trim();
 
-	var wikiAPI = 'https:/simple.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences-2&titles=' + userInput + '&explaintext=1&format=json&formatversion=2&origin=*'
+	var wikiAPI = 'https:/simple.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences-2&titles=' + userInput + '&explaintext=1&format=json&formatversion=2&origin=*';
 
 	console.log(wikiAPI);
 	fetch(wikiAPI)
@@ -31,7 +32,8 @@ function getWikiAPI() {
 		wikiContent.textContent = 'blank for now'
 };
 
-searchBtn.addEventListener('click',() => {
+startButton.addEventListener('click', function(event) {
+	event.preventDefault();
+
 	getSeatGeek();
-	getWikiAPI();
 });
