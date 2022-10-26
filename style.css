@@ -12,6 +12,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 20px;
+    min-width: 550px ;
 }
 
 #box::before{
@@ -52,7 +53,7 @@ transform: rotate(0deg);
 #container{
   
     max-width: 700px;
-    width: 100%;
+   
     margin: auto;
     height:  30vh;
     display: flex;
@@ -151,4 +152,43 @@ label{
     box-shadow: 0 0 20px rgb(0,0,0, 0.5);
    -webkit-transform: scale(1.1);
    transform: scale(1.1);
+}
+
+/* ----------responsive---------- */
+
+@media  (max-width: 767px){
+
+    #loading{
+        width: 50px;
+        height: 50px;
+        background: black ;
+        margin: 50px;
+        border-radius: 50%;
+        border-left: 10px solid orange;
+        animation: turn 2s linear infinite;
+        -webkit-animation: turn 2s linear infinite;
+        -moz-animation: turn 2s linear infinite;
+        margin: 0;
+        min-width: 50px;
+        min-height: 50px;
+        
+    
+    }@-webkit-keyframes turn{
+        100%{
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    
+    @-moz-keyframes turn{
+        100%{
+            -moz-transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes turn{
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+    
 }
