@@ -1,8 +1,11 @@
-var startButton = document.getElementById("startButton");
-var input = document.getElementById("input");
-var backButton = document.getElementById("backButton");
-var userInput;
+function getstorageInput() {
+  var storedInput = localStorage.getItem("search");
 
+  if (storedInput !== null) {
+    userInput = storedInput;
+  }
+  getSeatGeek(storedInput);
+}
 function getSeatGeek(Artist) {
   var seatGeekAPI =
     "https://api.seatgeek.com/2/performers?q=" +
@@ -40,7 +43,8 @@ function getSeatGeek(Artist) {
             var ticketLink = event.url;
             var ticketPriceHigh = event.stats.highest_price;
             var ticketPriceLow = event.stats.lowest_price;
-
+            console.log(artistName);
+            console.log(artistImage);
             console.log(ticketPriceLow);
             console.log(ticketPriceHigh);
             console.log(ticketLink);
@@ -53,44 +57,4 @@ function getSeatGeek(Artist) {
 
     .catch((err) => console.error(err));
 }
-
-function getWikiAPI() {
-  userInput = input.value.trim();
-
-  var wikiAPI =
-    "https:/simple.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences-2&titles=" +
-    userInput +
-    "&explaintext=1&format=json&formatversion=2&origin=*";
-
-  console.log(wikiAPI);
-  fetch(wikiAPI)
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
-}
-
-function setStorageInput() {
-  userInput = input.value.trim();
-  localStorage.setItem("search", JSON.stringify(userInput));
-}
-
-// function getstorageInput() {
-//   var storedInput = localStorage.getItem("search");
-
-//   if (storedInput !== null) {
-//     userInput = storedInput;
-//   }
-//   getSeatGeek(storedInput);
-// }
-
-function clearStorage() {
-  localStorage.removeItem("search", userInput);
-}
-
-if (startButton) {
-  startButton.addEventListener("click", function (event) {
-    event.preventDefault();
-    setStorageInput();
-    window.location.assign("./mainindex.html");
-  });
-}
+getstorageInput();
