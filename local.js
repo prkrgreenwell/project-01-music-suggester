@@ -1,3 +1,35 @@
+/** @format */
+
+var eventDates = [
+  document.getElementById("event-date1"),
+  document.getElementById("event-date2"),
+  document.getElementById("event-date3"),
+];
+
+var venueLocations = [
+  document.getElementById("venue-loc1"),
+  document.getElementById("venue-loc2"),
+  document.getElementById("venue-loc3"),
+];
+
+var venueNames = [
+  document.getElementById("venue-name1"),
+  document.getElementById("venue-name2"),
+  document.getElementById("venue-name3"),
+];
+
+var prices = [
+  document.getElementById("prices1"),
+  document.getElementById("prices2"),
+  document.getElementById("prices3"),
+];
+
+var ticketLinks = [
+  document.getElementById("ticket-link1"),
+  document.getElementById("ticket-link2"),
+  document.getElementById("ticket-link3"),
+];
+
 function getstorageInput() {
   var storedInput = localStorage.getItem("search");
 
@@ -41,12 +73,24 @@ function getSeatGeek(Artist) {
             var eventDate = event.datetime_local;
             var venueName = event.venue.name;
             var ticketLink = event.url;
-            var ticketPriceHigh = event.stats.highest_price;
-            var ticketPriceLow = event.stats.lowest_price;
+            var ticketPrice = event.stats.median_price;
+
+            //Make this loopable
+            var mainHeader = document.getElementById("artist-name");
+            var headerImage = document.getElementById("artist-image");
+
+            mainHeader.textContent = artistName;
+            headerImage.src = artistImage;
+
+            eventDates[i].textContent = "Date: " + eventDate;
+            venueLocations[i].textContent = venueLoc;
+            venueNames[i].textContent = "Venue: " + venueName;
+            prices[i].textContent = "Average Price: $" + ticketPrice;
+            ticketLinks[i].href = ticketLink;
+
             console.log(artistName);
             console.log(artistImage);
-            console.log(ticketPriceLow);
-            console.log(ticketPriceHigh);
+            console.log(ticketPrice);
             console.log(ticketLink);
             console.log(venueName);
             console.log(eventDate);
