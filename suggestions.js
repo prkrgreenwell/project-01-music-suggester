@@ -1,0 +1,15 @@
+let suggestions = [
+  "Bad Bunny",
+  "Taylor Swift",
+  "BTS",
+  "Drake",
+  "Justin Bieber",
+  "The Weeknd",
+  "J Balvin",
+  "Ariana Grande",
+  "Olivia Rodrigo",
+  "Juice WRLD",
+  "Dua Lipa",
+  "Rauw Alejandro",
+  "Ed Sheeran",
+];
