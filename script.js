@@ -1,15 +1,12 @@
 var startButton = document.getElementById("startButton");
-// console.log(startButton);
 var input = document.getElementById("input");
-var wikiContent = document.getElementById("wikiContent");
-var userInput = input.value.trim();
+var backButton = document.getElementById("backButton");
+var userInput;
 
-function getSeatGeek() {
-  userInput = input.value.trim();
-
+function getSeatGeek(storedArtist) {
   var seatGeekAPI =
     "https://api.seatgeek.com/2/performers?q=" +
-    userInput +
+    storedArtist +
     "&client_id=Mjk5MjA1OTl8MTY2NjY2MjkxOC4yNDc4MzE4";
 
   fetch(seatGeekAPI)
@@ -31,34 +28,26 @@ function getSeatGeek() {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
-
+          //   console.log(data);
           var artistName = data.events[0].performers[0].name;
           var artistImage = data.events[0].performers[0].image;
-          var eventDate = data.events[0].datetime_local;
-          var venueName = data.events[0].venue.name;
-          var venueLocation = data.events[0].venue.display_location;
-          var ticketLink = data.events[0].url;
-          var ticketPriceHigh = data.events[0].stats.highest_price;
-          var ticketPriceLow = data.events[0].stats.lowest_price;
 
-          console.log(
-            artistName +
-              "---" +
-              artistImage +
-              "---" +
-              eventDate +
-              "---" +
-              venueName +
-              "---" +
-              venueLocation +
-              "---" +
-              ticketLink +
-              "---" +
-              ticketPriceHigh +
-              "---" +
-              ticketPriceLow
-          );
+          for (var i = 0; i < 3; i++) {
+            var event = data.events[i];
+            var venueLoc = event.venue.display_location;
+            var eventDate = event.datetime_local;
+            var venueName = event.venue.name;
+            var ticketLink = event.url;
+            var ticketPriceHigh = event.stats.highest_price;
+            var ticketPriceLow = event.stats.lowest_price;
+
+            console.log(ticketPriceLow);
+            console.log(ticketPriceHigh);
+            console.log(ticketLink);
+            console.log(venueName);
+            console.log(eventDate);
+            console.log(venueLoc);
+          }
         });
     })
 
@@ -78,14 +67,30 @@ function getWikiAPI() {
     .then((response) => response.json())
     .then((response) => console.log(response))
     .catch((err) => console.error(err));
-
-  wikiContent.textContent = "blank for now";
 }
 
-startButton.addEventListener("click", function (event) {
-  event.preventDefault();
+function setStorageInput() {
+  userInput = input.value.trim();
+  localStorage.setItem("search", JSON.stringify(userInput));
+}
 
-  //   window.location.assign("./mainindex.html");
+function getstorageInput() {
+  var storedInput = localStorage.getItem("search");
 
-  getSeatGeek();
-});
+  if (storedInput !== null) {
+    userInput = storedInput;
+  }
+  getSeatGeek(storedInput);
+}
+
+function clearStorage() {
+  localStorage.removeItem("search", userInput);
+}
+
+if (startButton) {
+  startButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    setStorageInput();
+    window.location.assign("./mainindex.html");
+  });
+}
