@@ -1,4 +1,5 @@
 /** @format */
+var storedInput;
 
 var eventDates = [
   document.getElementById("event-date1"),
@@ -57,12 +58,13 @@ function formatDate(date) {
 }
 
 function getstorageInput() {
-  var storedInput = localStorage.getItem("search");
+  storedInput = localStorage.getItem("search");
 
   if (storedInput !== null) {
     userInput = storedInput;
   }
   getSeatGeek(storedInput);
+  getWikiAPI(storedInput);
 }
 function getSeatGeek(Artist) {
   var seatGeekAPI =
@@ -115,6 +117,33 @@ function getSeatGeek(Artist) {
             ticketLinks[i].href = ticketLink;
           }
         });
+    })
+
+    .catch((err) => console.error(err));
+}
+
+function getWikiAPI(info) {
+  //   var wikiAPI =
+  //     "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=5&explaintext&titles=Dogs&format=json&formatversion=2&origin=*";
+  var wikiAPI =
+    "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" +
+    info.replace(/['"]+/g, "") +
+    "&origin=*";
+
+  console.log(wikiAPI);
+
+  fetch(wikiAPI)
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      var pageValue;
+      for (var property in data.query.pages) {
+        pageValue = property;
+      }
+      console.log(data.query.pages[pageValue]);
+      var artistInfo = data.query.pages[pageValue].extract;
+      console.log(artistInfo);
     })
 
     .catch((err) => console.error(err));

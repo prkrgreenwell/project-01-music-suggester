@@ -54,34 +54,25 @@ function getSeatGeek(Artist) {
     .catch((err) => console.error(err));
 }
 
-function getWikiAPI() {
-  userInput = input.value.trim();
+// function getWikiAPI() {
+//   userInput = input.value.trim();
 
-  var wikiAPI =
-    "https:/simple.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences-2&titles=" +
-    userInput +
-    "&explaintext=1&format=json&formatversion=2&origin=*";
+//   var wikiAPI =
+//     "https:/simple.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences-2&titles=" +
+//     userInput +
+//     "&explaintext=1&format=json&formatversion=2&origin=*";
 
-  console.log(wikiAPI);
-  fetch(wikiAPI)
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
-}
+//   console.log(wikiAPI);
+//   fetch(wikiAPI)
+//     .then((response) => response.json())
+//     .then((response) => console.log(response))
+//     .catch((err) => console.error(err));
+// }
 
 function setStorageInput() {
   userInput = input.value.trim();
   localStorage.setItem("search", JSON.stringify(userInput));
 }
-
-// function getstorageInput() {
-//   var storedInput = localStorage.getItem("search");
-
-//   if (storedInput !== null) {
-//     userInput = storedInput;
-//   }
-//   getSeatGeek(storedInput);
-// }
 
 function clearStorage() {
   localStorage.removeItem("search", userInput);
