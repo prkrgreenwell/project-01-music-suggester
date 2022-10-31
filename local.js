@@ -30,6 +30,32 @@ var ticketLinks = [
   document.getElementById("ticket-link3"),
 ];
 
+function formatDate(date) {
+  var newDate = date.split("-");
+  var yearNum = String(newDate[0]);
+  var monthNum = Number(newDate[1]);
+  var dayNum = String(newDate[2].slice(0, 2));
+  var months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  var month = months[monthNum - 1];
+
+  var finalDate = month + " " + dayNum + ", " + yearNum;
+
+  return finalDate;
+}
+
 function getstorageInput() {
   var storedInput = localStorage.getItem("search");
 
@@ -74,27 +100,19 @@ function getSeatGeek(Artist) {
             var venueName = event.venue.name;
             var ticketLink = event.url;
             var ticketPrice = event.stats.median_price;
+            var eventDateFormatted = formatDate(eventDate);
 
-            //Make this loopable
             var mainHeader = document.getElementById("artist-name");
             var headerImage = document.getElementById("artist-image");
 
             mainHeader.textContent = artistName;
             headerImage.src = artistImage;
 
-            eventDates[i].textContent = "Date: " + eventDate;
+            eventDates[i].textContent = "Date: " + eventDateFormatted;
             venueLocations[i].textContent = venueLoc;
             venueNames[i].textContent = "Venue: " + venueName;
             prices[i].textContent = "Average Price: $" + ticketPrice;
             ticketLinks[i].href = ticketLink;
-
-            console.log(artistName);
-            console.log(artistImage);
-            console.log(ticketPrice);
-            console.log(ticketLink);
-            console.log(venueName);
-            console.log(eventDate);
-            console.log(venueLoc);
           }
         });
     })
