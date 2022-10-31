@@ -87,10 +87,13 @@ function clearStorage() {
   localStorage.removeItem("search", userInput);
 }
 
-if (startButton) {
-  startButton.addEventListener("click", function (event) {
-    event.preventDefault();
+startButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  if (input.value == "") {
+    swal("Empty text!", "You didn't put any text!", "error");
+  } else {
     setStorageInput();
     window.location.assign("./mainindex.html");
-  });
-}
+  }
+});

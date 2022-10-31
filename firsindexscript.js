@@ -6,7 +6,7 @@ const icon = searchWrapper.querySelector(".icon");
 
 // if user press any key and release
 inputBox.onkeyup = (e) => {
-  let userData = e.target.value; //user enetered data
+  let userData = e.target.value; //user entered data
   let emptyArray = [];
   if (userData) {
     emptyArray = suggestions.filter((data) => {
