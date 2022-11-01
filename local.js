@@ -110,7 +110,7 @@ function getSeatGeek(Artist) {
             mainHeader.textContent = artistName;
             headerImage.src = artistImage;
 
-            eventDates[i].textContent = "Date: " + eventDateFormatted;
+            eventDates[i].textContent = eventDateFormatted;
             venueLocations[i].textContent = venueLoc;
             venueNames[i].textContent = "Venue: " + venueName;
             prices[i].textContent = "Average Price: $" + ticketPrice;
