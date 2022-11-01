@@ -6,17 +6,20 @@
     <title>Music Suggester</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header
-      class="has-text-centered is-flex is-justify-content-center is-align-items-center">
+      class="has-text-centered is-flex is-justify-content-center is-align-items-center"
+    >
       <h1
         class="is-size-1"
         id="title"
-        data-text="Flying Penguins Music Suggester">
-        Flying Penguins Music Suggester
+        data-text="Flying Penguins Music Suggester"
+      >
+        Flying Penguins Concert Finder
       </h1>
 
       <div id="loading"></div>
@@ -25,7 +28,7 @@
       <section id="container">
         <form>
           <div id="title">
-            <h2>Search an Artist You Love</h2>
+            <h2>Search Upcoming Concerts Below</h2>
           </div>
           <div id="container2">
             <div class="inputBox">
@@ -33,13 +36,14 @@
                 <div class="search-input">
                   <input
                     type="text"
-                    placeholder="Tipe to search Artist"
-                    id="input" />
+                    placeholder="Type Artist Name Here"
+                    id="input"
+                  />
                   <div class="autocom-box"></div>
                   <!-- list are inserted from javascript -->
                 </div>
               </div>
-              <label for="name" id="label">Artist</label>
+              <label for="name" id="label"></label>
             </div>
           </div>
           <button id="startButton">Search</button>
