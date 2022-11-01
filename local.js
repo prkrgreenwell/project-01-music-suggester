@@ -1,5 +1,6 @@
 /** @format */
 var storedInput;
+var backButton = document.getElementById("backButton");
 
 var eventDates = [
   document.getElementById("event-date1"),
@@ -97,10 +98,8 @@ function getSeatGeek(Artist) {
           if (data.events.length === 0) {
             var removeInfo = document.getElementById("section");
             var mainHeader = document.getElementById("artist-name");
-            var hideButtons = document.getElementById("hide-buttons");
 
             removeInfo.style.display = "none";
-            hideButtons.innerHTML = "";
 
             mainHeader.textContent = "No upcoming dates for this artist";
           }
@@ -126,7 +125,7 @@ function getSeatGeek(Artist) {
               mainHeader.textContent = artistName;
               headerImage.src = artistImage;
 
-              eventDates[i].textContent = "Date: " + eventDate;
+              eventDates[i].textContent = "Date: " + formatDate(eventDate);
               venueLocations[i].textContent = venueLoc;
               venueNames[i].textContent = "Venue: " + venueName;
               prices[i].textContent = "Average Price: $" + ticketPrice;
@@ -145,13 +144,15 @@ function getSeatGeek(Artist) {
               var ticketLink = event.url;
               var ticketPrice = event.stats.median_price;
 
+              formatDate(eventDate);
+
               var mainHeader = document.getElementById("artist-name");
               var headerImage = document.getElementById("artist-image");
 
               mainHeader.textContent = artistName;
               headerImage.src = artistImage;
 
-              eventDates[i].textContent = "Date: " + eventDate;
+              eventDates[i].textContent = "Date: " + formatDate(eventDate);
               venueLocations[i].textContent = venueLoc;
               venueNames[i].textContent = "Venue: " + venueName;
               prices[i].textContent = "Average Price: $" + ticketPrice;
@@ -168,13 +169,15 @@ function getSeatGeek(Artist) {
               var ticketLink = event.url;
               var ticketPrice = event.stats.median_price;
 
+              formatDate(eventDate);
+
               var mainHeader = document.getElementById("artist-name");
               var headerImage = document.getElementById("artist-image");
 
               mainHeader.textContent = artistName;
               headerImage.src = artistImage;
 
-              eventDates[i].textContent = "Date: " + eventDate;
+              eventDates[i].textContent = "Date: " + formatDate(eventDate);
               venueLocations[i].textContent = venueLoc;
               venueNames[i].textContent = "Venue: " + venueName;
               prices[i].textContent = "Average Price: $" + ticketPrice;
@@ -221,4 +224,10 @@ function getWikiAPI(info) {
 
     .catch((err) => console.error(err));
 }
+
+backButton.addEventListener("click", function (event) {
+  event.preventDefault();
+  window.location.assign("./firstindex.html");
+});
+
 getstorageInput();
