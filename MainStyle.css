@@ -323,7 +323,7 @@ h3 {
 }
 
 .popup {
-  width: auto;
+  width: 800px;
   height: auto;
   background-attachment: #0066ff;
   border-radius: 6px;
@@ -355,6 +355,10 @@ h3 {
 .open-popup {
   visibility: visible;
 
-  transform: translate(-50%, 100%) scale(1);
+  transform: translate(-50%, -45%) scale(0.9);
   top: 50%;
+}
+
+button {
+  margin: 10px;
 }
