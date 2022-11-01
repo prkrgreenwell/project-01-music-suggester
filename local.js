@@ -60,7 +60,7 @@ function formatDate(date) {
   return finalDate;
 }
 
-function getstorageInput() {
+function getStorageInput() {
   storedInput = localStorage.getItem("search");
 
   if (storedInput !== null) {
@@ -127,7 +127,7 @@ function getSeatGeek(Artist) {
               mainHeader.textContent = artistName;
               headerImage.src = artistImage;
 
-              eventDates[i].textContent = "Date: " + formatDate(eventDate);
+              eventDates[i].textContent = formatDate(eventDate);
               venueLocations[i].textContent = venueLoc;
               venueNames[i].textContent = "Venue: " + venueName;
               prices[i].textContent = "Average Price: $" + ticketPrice;
@@ -154,7 +154,7 @@ function getSeatGeek(Artist) {
               mainHeader.textContent = artistName;
               headerImage.src = artistImage;
 
-              eventDates[i].textContent = "Date: " + formatDate(eventDate);
+              eventDates[i].textContent = formatDate(eventDate);
               venueLocations[i].textContent = venueLoc;
               venueNames[i].textContent = "Venue: " + venueName;
               prices[i].textContent = "Average Price: $" + ticketPrice;
@@ -179,7 +179,7 @@ function getSeatGeek(Artist) {
               mainHeader.textContent = artistName;
               headerImage.src = artistImage;
 
-              eventDates[i].textContent = "Date: " + formatDate(eventDate);
+              eventDates[i].textContent = formatDate(eventDate);
               venueLocations[i].textContent = venueLoc;
               venueNames[i].textContent = "Venue: " + venueName;
               prices[i].textContent = "Average Price: $" + ticketPrice;
