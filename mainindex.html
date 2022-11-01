@@ -54,13 +54,28 @@
       </div>
     </section>
     <div class="flex">
-      <form class="flex-item">
-        <button class="button button is-primary">
+        <button class="button button is-primary" id="learnMoreBtn" onclick="openPopup()">
           Click to Learn more about this artist!
         </button>
-      </form>
-      <form class="flex-item">
-        <button class="button button is-danger" id="backButton">Go Back</button>
+        <div class="popup" id="popup">
+          <h2>Artist Info</h2>
+          <p id="artistText">
+          </p>
+          <button onclick="closePopup()">ok</button>
+        </div>
+        <form class="flex-item">
+          <button class="button button is-danger" id="backButton">Go Back</button>
+        </form>
+      </div>
+      <script>
+        let popup = document.getElementById("popup");
+        function openPopup() {
+          popup.classList.add("open-popup");
+        }
+        function closePopup() {
+          popup.classList.remove("open-popup");
+        }
+      </script>
       </form>
     </div>
     <script src="./local.js"></script>

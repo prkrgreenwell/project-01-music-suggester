@@ -1,6 +1,8 @@
 /** @format */
 var storedInput;
 var backButton = document.getElementById("backButton");
+var learnMoreBtn = document.getElementById("learnMoreBtn");
+var artistText = document.getElementById("artistText");
 
 var eventDates = [
   document.getElementById("event-date1"),
@@ -65,7 +67,7 @@ function getstorageInput() {
     userInput = storedInput;
   }
   getSeatGeek(storedInput);
-  getWikiAPI(storedInput);
+  //   getWikiAPI(storedInput);
 }
 function getSeatGeek(Artist) {
   var seatGeekAPI =
@@ -199,8 +201,6 @@ function getSeatGeek(Artist) {
 }
 
 function getWikiAPI(info) {
-  //   var wikiAPI =
-  //     "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=5&explaintext&titles=Dogs&format=json&formatversion=2&origin=*";
   var wikiAPI =
     "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" +
     info.replace(/['"]+/g, "") +
@@ -220,6 +220,8 @@ function getWikiAPI(info) {
       console.log(data.query.pages[pageValue]);
       var artistInfo = data.query.pages[pageValue].extract;
       console.log(artistInfo);
+
+      artistText.textContent = artistInfo;
     })
 
     .catch((err) => console.error(err));
@@ -228,6 +230,11 @@ function getWikiAPI(info) {
 backButton.addEventListener("click", function (event) {
   event.preventDefault();
   window.location.assign("./firstindex.html");
+});
+
+learnMoreBtn.addEventListener("click", function (event) {
+  event.preventDefault();
+  getWikiAPI(storedInput);
 });
 
 getstorageInput();
