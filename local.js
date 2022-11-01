@@ -92,30 +92,103 @@ function getSeatGeek(Artist) {
         })
         .then((data) => {
           console.log(data);
+          console.log(data.events.length);
+
+          if (data.events.length === 0) {
+            var removeInfo = document.getElementById("section");
+            var mainHeader = document.getElementById("artist-name");
+            var hideButtons = document.getElementById("hide-buttons");
+
+            removeInfo.style.display = "none";
+            hideButtons.innerHTML = "";
+
+            mainHeader.textContent = "No upcoming dates for this artist";
+          }
+
           var artistName = data.events[0].performers[0].name;
           var artistImage = data.events[0].performers[0].image;
 
-          for (var i = 0; i < 3; i++) {
-            var event = data.events[i];
-            var venueLoc = event.venue.display_location;
-            var eventDate = event.datetime_local;
-            var venueName = event.venue.name;
-            var ticketLink = event.url;
-            var ticketPrice = event.stats.median_price;
-            var eventDateFormatted = formatDate(eventDate);
+          if (data.events.length === 1) {
+            document.getElementById("container2").style.display = "none";
+            document.getElementById("container3").style.display = "none";
 
-            var mainHeader = document.getElementById("artist-name");
-            var headerImage = document.getElementById("artist-image");
+            for (var i = 0; i < 1; i++) {
+              var event = data.events[i];
+              var venueLoc = event.venue.display_location;
+              var eventDate = event.datetime_local;
+              var venueName = event.venue.name;
+              var ticketLink = event.url;
+              var ticketPrice = event.stats.median_price;
 
-            mainHeader.textContent = artistName;
-            headerImage.src = artistImage;
+              var mainHeader = document.getElementById("artist-name");
+              var headerImage = document.getElementById("artist-image");
 
-            eventDates[i].textContent = "Date: " + eventDateFormatted;
-            venueLocations[i].textContent = venueLoc;
-            venueNames[i].textContent = "Venue: " + venueName;
-            prices[i].textContent = "Average Price: $" + ticketPrice;
-            ticketLinks[i].href = ticketLink;
+              mainHeader.textContent = artistName;
+              headerImage.src = artistImage;
+
+              eventDates[i].textContent = "Date: " + eventDate;
+              venueLocations[i].textContent = venueLoc;
+              venueNames[i].textContent = "Venue: " + venueName;
+              prices[i].textContent = "Average Price: $" + ticketPrice;
+              ticketLinks[i].href = ticketLink;
+            }
           }
+
+          if (data.events.length === 2) {
+            document.getElementById("container3").style.display = "none";
+
+            for (var i = 0; i < 3; i++) {
+              var event = data.events[i];
+              var venueLoc = event.venue.display_location;
+              var eventDate = event.datetime_local;
+              var venueName = event.venue.name;
+              var ticketLink = event.url;
+              var ticketPrice = event.stats.median_price;
+
+              var mainHeader = document.getElementById("artist-name");
+              var headerImage = document.getElementById("artist-image");
+
+              mainHeader.textContent = artistName;
+              headerImage.src = artistImage;
+
+              eventDates[i].textContent = "Date: " + eventDate;
+              venueLocations[i].textContent = venueLoc;
+              venueNames[i].textContent = "Venue: " + venueName;
+              prices[i].textContent = "Average Price: $" + ticketPrice;
+              ticketLinks[i].href = ticketLink;
+            }
+          }
+
+          if (data.events.length >= 3) {
+            for (var i = 0; i < 3; i++) {
+              var event = data.events[i];
+              var venueLoc = event.venue.display_location;
+              var eventDate = event.datetime_local;
+              var venueName = event.venue.name;
+              var ticketLink = event.url;
+              var ticketPrice = event.stats.median_price;
+
+              var mainHeader = document.getElementById("artist-name");
+              var headerImage = document.getElementById("artist-image");
+
+              mainHeader.textContent = artistName;
+              headerImage.src = artistImage;
+
+              eventDates[i].textContent = "Date: " + eventDate;
+              venueLocations[i].textContent = venueLoc;
+              venueNames[i].textContent = "Venue: " + venueName;
+              prices[i].textContent = "Average Price: $" + ticketPrice;
+              ticketLinks[i].href = ticketLink;
+            }
+          }
+
+          console.log(artistName);
+          console.log(artistImage);
+          console.log(ticketPrice);
+          console.log(ticketLink);
+          console.log(venueName);
+          console.log(eventDate);
+          console.log(venueLoc);
         });
     })
 
