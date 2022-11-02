@@ -31,7 +31,7 @@ header {
 #headerContainer::before {
   content: "";
   position: absolute;
-  width: 50px;
+  width: 100px;
   height: 350%;
   background: linear-gradient(#00ccff, #d400d4);
   animation: animate 4s linear infinite;
@@ -68,7 +68,7 @@ img {
 }
 
 #animation1 {
-  width: 100px;
+  width: 300px;
   height: 100px;
   background: black;
   margin: 50px;
@@ -150,7 +150,7 @@ img {
 #container1::before {
   content: "";
   position: absolute;
-  width: 100px;
+  width: 200px;
   height: 1000%;
   background: linear-gradient(#00ccff, #d400d4);
   animation: animate 4s linear infinite;
@@ -197,7 +197,7 @@ img {
 #container2::before {
   content: "";
   position: absolute;
-  width: 100px;
+  width: 200px;
   height: 1000%;
   background: linear-gradient(#fff685, #ff1d58);
   animation: animate 5s linear infinite;
@@ -244,7 +244,7 @@ img {
 #container3::before {
   content: "";
   position: absolute;
-  width: 100px;
+  width: 200px;
   height: 1000%;
   background: linear-gradient(#e65758, #771d32);
   animation: animate 3s linear infinite;

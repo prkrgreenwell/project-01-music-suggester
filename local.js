@@ -237,4 +237,4 @@ learnMoreBtn.addEventListener("click", function (event) {
   getWikiAPI(storedInput);
 });
 
-getstorageInput();
+getStorageInput();
