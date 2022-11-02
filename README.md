@@ -26,4 +26,4 @@ Please refer to the LICENSE in the repo.
 
 ![image](Screenshot%202022-10-01%20203357.png)
 
-Website can be found at https://prkrgreenwell.github.io/challenge-03-password-generator/
+Website can be found at https://prkrgreenwell.github.io/project-01-music-suggester/firstindex.html
